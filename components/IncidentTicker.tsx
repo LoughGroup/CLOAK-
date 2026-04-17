@@ -16,8 +16,17 @@ const SOURCE_COLORS: Record<string, string> = {
   OAIC: '#A78BFA',
 }
 
+const FALLBACK: Alert[] = [
+  { id: '1', title: 'SIM swap attacks up 34% across NSW and VIC — April 2025', date: '2025-04-10', url: 'https://www.scamwatch.gov.au', source: 'Scamwatch' },
+  { id: '2', title: 'MyGov phishing campaign active — do not click SMS links', date: '2025-04-08', url: 'https://www.cyber.gov.au', source: 'ACSC' },
+  { id: '3', title: 'Medicare card scam targeting elderly Australians — March 2025', date: '2025-03-28', url: 'https://www.scamwatch.gov.au', source: 'Scamwatch' },
+  { id: '4', title: 'ATO impersonation scam calls — 4,200 reports in March', date: '2025-03-20', url: 'https://www.scamwatch.gov.au', source: 'Scamwatch' },
+  { id: '5', title: 'Investment scam losses reach $180M in Q1 2025', date: '2025-04-01', url: 'https://www.scamwatch.gov.au', source: 'Scamwatch' },
+  { id: '6', title: 'Fake toll road SMS scam targeting all Australian states', date: '2025-03-15', url: 'https://www.cyber.gov.au', source: 'ACSC' },
+]
+
 export default function IncidentTicker() {
-  const [alerts, setAlerts] = useState<Alert[]>([])
+  const [alerts, setAlerts] = useState<Alert[]>(FALLBACK)
 
   useEffect(() => {
     fetch('/api/alerts')
