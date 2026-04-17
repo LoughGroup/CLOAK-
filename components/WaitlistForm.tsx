@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Card } from '@/components/ui/Card'
 
 const AU_STATES = ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
 
@@ -30,8 +31,8 @@ export default function WaitlistForm() {
     return (
       <div
         style={{
-          background: 'rgba(45,212,191,0.08)',
-          border: '1px solid rgba(45,212,191,0.25)',
+          background: 'var(--color-teal-muted)',
+          border: '1px solid rgba(26,158,143,0.35)',
           borderRadius: 12,
           padding: '32px 24px',
           textAlign: 'center',
@@ -43,13 +44,13 @@ export default function WaitlistForm() {
             fontFamily: 'Syne, sans-serif',
             fontWeight: 700,
             fontSize: 18,
-            color: '#F1F5F9',
+            color: 'var(--color-text-primary)',
             marginBottom: 6,
           }}
         >
           You&apos;re on the list
         </div>
-        <p style={{ fontSize: 14, color: '#94A3B8', fontWeight: 300 }}>
+        <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', fontWeight: 300 }}>
           We&apos;ll notify you the moment CLOAK launches in Australia.
         </p>
       </div>
@@ -57,31 +58,24 @@ export default function WaitlistForm() {
   }
 
   return (
-    <div
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: 16,
-        padding: '40px 32px',
-      }}
-    >
+    <Card variant="default" style={{ borderRadius: 'var(--radius-xl)', padding: '40px 32px' }}>
       <div style={{ marginBottom: 24, textAlign: 'center' }}>
         <div
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: 6,
-            background: 'rgba(45,212,191,0.08)',
-            border: '1px solid rgba(45,212,191,0.2)',
+            background: 'var(--color-teal-muted)',
+            border: '1px solid rgba(26,158,143,0.3)',
             borderRadius: 999,
             padding: '4px 14px',
             fontSize: 11,
             fontWeight: 600,
-            color: '#2DD4BF',
+            color: 'var(--color-teal)',
             marginBottom: 16,
           }}
         >
-          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#2DD4BF' }} />
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--color-teal)' }} />
           Launching soon
         </div>
         <h3
@@ -89,13 +83,13 @@ export default function WaitlistForm() {
             fontFamily: 'Syne, sans-serif',
             fontWeight: 800,
             fontSize: 22,
-            color: '#F1F5F9',
+            color: 'var(--color-text-primary)',
             marginBottom: 8,
           }}
         >
           Be first to know when CLOAK launches
         </h3>
-        <p style={{ fontSize: 14, color: '#94A3B8', fontWeight: 300, lineHeight: 1.6 }}>
+        <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', fontWeight: 300, lineHeight: 1.6 }}>
           Join the waitlist. Get early access, plus a free premium trial when we launch.
         </p>
       </div>
@@ -108,12 +102,12 @@ export default function WaitlistForm() {
           onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
           style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'var(--color-bg-page)',
+            border: '1px solid var(--color-border)',
             borderRadius: 8,
             padding: '12px 16px',
             fontSize: 14,
-            color: '#F1F5F9',
+            color: 'var(--color-text-primary)',
             outline: 'none',
             fontFamily: 'DM Sans, sans-serif',
             width: '100%',
@@ -123,12 +117,12 @@ export default function WaitlistForm() {
           value={state}
           onChange={(e) => setState(e.target.value)}
           style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'var(--color-bg-page)',
+            border: '1px solid var(--color-border)',
             borderRadius: 8,
             padding: '12px 16px',
             fontSize: 14,
-            color: state ? '#F1F5F9' : '#64748B',
+            color: state ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
             outline: 'none',
             fontFamily: 'DM Sans, sans-serif',
             width: '100%',
@@ -147,8 +141,8 @@ export default function WaitlistForm() {
           onClick={handleSubmit}
           disabled={status === 'loading' || !email}
           style={{
-            background: email ? '#2DD4BF' : 'rgba(45,212,191,0.3)',
-            color: '#0B0F1A',
+            background: email ? 'var(--color-teal)' : 'rgba(26,158,143,0.35)',
+            color: 'var(--color-navy)',
             fontWeight: 700,
             padding: '13px 0',
             borderRadius: 8,
@@ -169,9 +163,9 @@ export default function WaitlistForm() {
         </p>
       )}
 
-      <p style={{ fontSize: 11, color: '#475569', textAlign: 'center', marginTop: 16 }}>
+      <p style={{ fontSize: 11, color: 'var(--color-text-secondary)', textAlign: 'center', marginTop: 16 }}>
         No spam. Unsubscribe any time. Australian privacy law compliant.
       </p>
-    </div>
+    </Card>
   )
 }

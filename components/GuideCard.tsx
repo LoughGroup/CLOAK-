@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import type { Guide } from '@/types'
+import { Card } from '@/components/ui/Card'
 
 type Props = {
   guide: Guide
@@ -23,36 +24,45 @@ const urgencyBadgeStyle = (urgency: Guide['urgency']): React.CSSProperties => {
   if (urgency === 'high-risk') {
     return { ...base, background: 'rgba(245,158,11,0.12)', color: '#FBBF24' }
   }
-  return { ...base, background: 'rgba(45,212,191,0.1)', color: '#2DD4BF' }
+  return { ...base, background: 'rgba(26,158,143,0.12)', color: 'var(--color-teal)' }
 }
 
 export default function GuideCard({ guide }: Props) {
-  const [borderColor, setBorderColor] = useState('rgba(255,255,255,0.08)')
+  const [borderColor, setBorderColor] = useState('var(--color-border)')
 
   return (
     <Link
       href={`/guides/${guide.slug}`}
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: `1px solid ${borderColor}`,
-        borderRadius: 12,
-        padding: 20,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 12,
+        display: 'block',
         textDecoration: 'none',
+        color: 'inherit',
+        height: '100%',
         transition: 'border-color 0.2s',
       }}
-      onMouseEnter={() => setBorderColor('rgba(45,212,191,0.35)')}
-      onMouseLeave={() => setBorderColor('rgba(255,255,255,0.08)')}
+      onMouseEnter={() => setBorderColor('rgba(26,158,143,0.45)')}
+      onMouseLeave={() => setBorderColor('var(--color-border)')}
     >
+      <Card
+        variant="default"
+        style={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 12,
+          border: `1px solid ${borderColor}`,
+          boxSizing: 'border-box',
+          borderLeft: '3px solid var(--color-teal)',
+          paddingLeft: 21,
+        }}
+      >
       <span
         style={{
           fontSize: 11,
           fontWeight: 600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
-          color: '#94A3B8',
+          color: 'var(--color-text-secondary)',
         }}
       >
         {guide.category}
@@ -60,9 +70,9 @@ export default function GuideCard({ guide }: Props) {
       <h3
         style={{
           fontFamily: 'Syne, sans-serif',
-          fontSize: 15,
+          fontSize: 'var(--font-size-md)',
           fontWeight: 600,
-          color: '#F1F5F9',
+          color: 'var(--color-navy)',
           lineHeight: 1.4,
           margin: 0,
         }}
@@ -71,8 +81,8 @@ export default function GuideCard({ guide }: Props) {
       </h3>
       <p
         style={{
-          fontSize: 13,
-          color: '#94A3B8',
+          fontSize: 'var(--font-size-sm)',
+          color: 'var(--color-text-secondary)',
           lineHeight: 1.6,
           flexGrow: 1,
           margin: 0,
@@ -82,8 +92,9 @@ export default function GuideCard({ guide }: Props) {
       </p>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 }}>
         <span style={urgencyBadgeStyle(guide.urgency)}>{guide.urgency.replace('-', ' ')}</span>
-        <span style={{ fontSize: 12, color: '#94A3B8' }}>{guide.readingTime} min read</span>
+        <span style={{ fontSize: 12, color: 'var(--color-text-secondary)' }}>{guide.readingTime} min read</span>
       </div>
+      </Card>
     </Link>
   )
 }

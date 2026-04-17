@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import AppBanner from '@/components/AppBanner'
 import WaitlistForm from '@/components/WaitlistForm'
+import { Card } from '@/components/ui/Card'
 
 export const metadata: Metadata = {
   title: 'Waitlist',
@@ -16,7 +17,7 @@ const TEASERS = [
 
 export default function WaitlistPage() {
   return (
-    <div style={{ background: '#0B0F1A', minHeight: '100vh' }}>
+    <div style={{ background: 'var(--color-bg-page)', minHeight: '100vh' }}>
       <section
         style={{
           maxWidth: 560,
@@ -31,7 +32,7 @@ export default function WaitlistPage() {
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            color: '#2DD4BF',
+            color: 'var(--color-teal)',
             marginBottom: 12,
             marginTop: 0,
           }}
@@ -46,7 +47,7 @@ export default function WaitlistPage() {
             lineHeight: 1.15,
             marginBottom: 16,
             marginTop: 0,
-            color: '#F1F5F9',
+            color: 'var(--color-text-primary)',
           }}
         >
           CLOAK is coming
@@ -54,7 +55,7 @@ export default function WaitlistPage() {
         <p
           style={{
             fontSize: 17,
-            color: '#94A3B8',
+            color: 'var(--color-text-secondary)',
             fontWeight: 300,
             margin: '0 auto 40px',
             lineHeight: 1.7,
@@ -75,32 +76,23 @@ export default function WaitlistPage() {
           }}
         >
           {TEASERS.map((item) => (
-            <div
-              key={item.title}
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: 14,
-                padding: '24px 22px',
-                textAlign: 'left',
-              }}
-            >
+            <Card key={item.title} variant="default" style={{ borderRadius: 14, padding: '24px 22px', textAlign: 'left' }}>
               <h2
                 style={{
                   fontFamily: 'Syne, sans-serif',
                   fontWeight: 700,
                   fontSize: 17,
-                  color: '#F1F5F9',
+                  color: 'var(--color-text-primary)',
                   marginTop: 0,
                   marginBottom: 8,
                 }}
               >
                 {item.title}
               </h2>
-              <p style={{ fontSize: 14, color: '#94A3B8', fontWeight: 300, margin: 0, lineHeight: 1.55 }}>
+              <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', fontWeight: 300, margin: 0, lineHeight: 1.55 }}>
                 {item.body}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </section>

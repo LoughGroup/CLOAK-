@@ -1,19 +1,30 @@
 'use client'
 
+import type { CSSProperties } from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { href: '/guides', label: 'Emergency guides' },
-  { href: '/calculator', label: 'Cost calculator' },
+  { href: '/emergency', label: 'Get Help Now' },
+  { href: '/guides', label: 'Review Guides' },
   { href: '/about', label: 'How it works' },
-  { href: '/stories', label: 'Real incidents' },
-  { href: '/tools', label: 'Trusted tools' },
+  { href: '/stories', label: 'About' },
+  { href: '/tools', label: 'Trusted Tools & Products' },
 ] as const
 
-const linkBaseColor = '#94A3B8'
-const linkHoverColor = '#F1F5F9'
+const navCtaStyle: CSSProperties = {
+  background: 'var(--color-teal)',
+  color: 'var(--color-bg-card)',
+  fontWeight: 600,
+  padding: '8px 20px',
+  borderRadius: 'var(--radius-md)',
+  border: 'none',
+  fontSize: 'var(--font-size-sm)',
+  cursor: 'pointer',
+  fontFamily: 'DM Sans, sans-serif',
+  textDecoration: 'none',
+}
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -24,8 +35,8 @@ export default function Nav() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'rgba(11,15,26,0.97)',
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        background: 'var(--color-navy)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(12px)',
       }}
     >
@@ -47,44 +58,20 @@ export default function Nav() {
             fontWeight: 800,
             fontSize: 20,
             letterSpacing: '0.15em',
-            color: '#F1F5F9',
+            color: 'var(--color-bg-card)',
             textDecoration: 'none',
           }}
         >
-          CLO<span style={{ color: '#2DD4BF' }}>A</span>K
+          CLO<span style={{ color: 'var(--color-teal-light)' }}>A</span>K
         </Link>
 
         <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              style={{ fontSize: 14, color: linkBaseColor, textDecoration: 'none' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = linkHoverColor
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = linkBaseColor
-              }}
-            >
+            <Link key={l.href} href={l.href} className="nav-link">
               {l.label}
             </Link>
           ))}
-          <a
-            href="#app"
-            style={{
-              background: '#2DD4BF',
-              color: '#0B0F1A',
-              fontWeight: 600,
-              padding: '8px 18px',
-              borderRadius: 8,
-              border: 'none',
-              fontSize: 14,
-              cursor: 'pointer',
-              fontFamily: 'DM Sans, sans-serif',
-              textDecoration: 'none',
-            }}
-          >
+          <a href="#app" style={navCtaStyle}>
             Get the app
           </a>
         </div>
@@ -94,9 +81,9 @@ export default function Nav() {
           className="nav-menu-button"
           aria-label={open ? 'Close menu' : 'Open menu'}
           style={{
-            borderRadius: 8,
+            borderRadius: 'var(--radius-md)',
             padding: 8,
-            color: '#F1F5F9',
+            color: 'var(--color-bg-card)',
             background: 'transparent',
             border: 'none',
             cursor: 'pointer',
@@ -112,42 +99,41 @@ export default function Nav() {
       {open ? (
         <div
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.08)',
-            background: 'rgba(17,24,39,0.98)',
-            padding: '16px 24px',
+            background: 'var(--color-navy)',
+            padding: 0,
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                style={{ fontSize: 14, color: linkBaseColor, textDecoration: 'none' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = linkHoverColor
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = linkBaseColor
-                }}
-                onClick={() => setOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
+          {links.map((l, i) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="nav-link"
+              style={{
+                display: 'block',
+                width: '100%',
+                boxSizing: 'border-box',
+                padding: '16px 24px',
+                borderBottom: i < links.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+              }}
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <div
+            style={{
+              padding: '16px 24px',
+              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            }}
+          >
             <a
               href="#app"
               style={{
-                background: '#2DD4BF',
-                color: '#0B0F1A',
-                fontWeight: 600,
-                padding: '8px 18px',
-                borderRadius: 8,
-                border: 'none',
-                fontSize: 14,
-                cursor: 'pointer',
-                fontFamily: 'DM Sans, sans-serif',
-                textDecoration: 'none',
-                width: 'fit-content',
+                ...navCtaStyle,
+                display: 'block',
+                width: '100%',
+                boxSizing: 'border-box',
+                textAlign: 'center',
               }}
               onClick={() => setOpen(false)}
             >

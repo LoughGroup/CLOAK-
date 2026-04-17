@@ -1,5 +1,6 @@
 export interface Guide {
   slug: string
+  type?: string
   title: string
   description: string
   category: string

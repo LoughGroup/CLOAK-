@@ -1,203 +1,198 @@
+import type { CSSProperties } from 'react'
 import Link from 'next/link'
 import AppBanner from '@/components/AppBanner'
 import GuideCard from '@/components/GuideCard'
+import PageBackground from '@/components/PageBackground'
 import StatsBanner from '@/components/StatsBanner'
 import WaitlistForm from '@/components/WaitlistForm'
 import { getAllGuides } from '@/lib/guides'
+
+const heroCtaPrimary: CSSProperties = {
+  background: 'var(--color-teal)',
+  color: 'var(--color-bg-card)',
+  fontWeight: 600,
+  padding: '12px 28px',
+  borderRadius: 'var(--radius-md)',
+  border: 'none',
+  fontSize: 'var(--font-size-base)',
+  cursor: 'pointer',
+  fontFamily: 'DM Sans, sans-serif',
+  textDecoration: 'none',
+}
+
+const heroCtaSecondary: CSSProperties = {
+  background: 'transparent',
+  color: 'var(--color-teal)',
+  fontWeight: 600,
+  padding: '12px 28px',
+  borderRadius: 'var(--radius-md)',
+  border: '1.5px solid var(--color-teal)',
+  fontSize: 'var(--font-size-base)',
+  cursor: 'pointer',
+  fontFamily: 'DM Sans, sans-serif',
+  textDecoration: 'none',
+}
 
 export default function HomePage() {
   const guides = getAllGuides()
 
   return (
-    <div style={{ background: 'transparent', minHeight: '100vh' }}>
-      <section
-        style={{
-          maxWidth: 860,
-          margin: '0 auto',
-          paddingTop: 80,
-          paddingBottom: 60,
-          textAlign: 'center',
-          paddingLeft: 24,
-          paddingRight: 24,
-        }}
-      >
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                background: 'rgba(45,212,191,0.08)',
-                border: '1px solid rgba(45,212,191,0.25)',
-                borderRadius: 999,
-                padding: '5px 16px',
-                fontSize: 12,
-                fontWeight: 600,
-                color: '#2DD4BF',
-                marginBottom: 24,
-              }}
-            >
-              Australia&apos;s recovery resource
-            </div>
-            <h1
-              style={{
-                fontFamily: 'Syne, sans-serif',
-                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                fontWeight: 800,
-                lineHeight: 1.1,
-                marginBottom: 20,
-                color: '#F1F5F9',
-              }}
-            >
-              What to do when something&apos;s{' '}
-              <span style={{ color: '#2DD4BF', fontStyle: 'italic' }}>gone wrong</span>
-            </h1>
-            <p
-              style={{
-                fontSize: 17,
-                color: '#94A3B8',
-                fontWeight: 300,
-                maxWidth: 520,
-                margin: '0 auto 32px',
-                lineHeight: 1.7,
-              }}
-            >
-              Clear, Australian-focused guides for high-stress moments — so you can act fast and limit the damage.
-            </p>
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link
-                href="/guides"
-                style={{
-                  background: '#2DD4BF',
-                  color: '#0B0F1A',
-                  fontWeight: 600,
-                  padding: '13px 28px',
-                  borderRadius: 8,
-                  border: 'none',
-                  fontSize: 14,
-                  cursor: 'pointer',
-                  fontFamily: 'DM Sans, sans-serif',
-                  textDecoration: 'none',
-                }}
-              >
-                Browse emergency guides
-              </Link>
-              <Link
-                href="/stories"
-                style={{
-                  background: 'transparent',
-                  color: '#F1F5F9',
-                  fontWeight: 500,
-                  padding: '13px 28px',
-                  borderRadius: 8,
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  fontSize: 14,
-                  cursor: 'pointer',
-                  fontFamily: 'DM Sans, sans-serif',
-                  textDecoration: 'none',
-                }}
-              >
-                Read real incidents
-              </Link>
-            </div>
-      </section>
+    <div style={{ background: 'var(--color-bg-page)', minHeight: '100vh' }}>
+      <div style={{ position: 'relative', background: 'var(--color-navy)', overflow: 'hidden' }}>
+        <PageBackground contained />
+        <section
+          className="section-pad-y section-inset-x"
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: 860,
+            margin: '0 auto',
+            textAlign: 'center',
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              background: 'rgba(26, 158, 143, 0.12)',
+              border: '1px solid rgba(26, 158, 143, 0.35)',
+              borderRadius: 999,
+              padding: '5px 16px',
+              fontSize: 'var(--font-size-sm)',
+              fontWeight: 600,
+              color: 'var(--color-teal-light)',
+              marginBottom: 24,
+            }}
+          >
+            Australia&apos;s recovery resource
+          </div>
+          <h1
+            style={{
+              fontFamily: 'Syne, sans-serif',
+              fontSize: 'var(--font-size-3xl)',
+              fontWeight: 700,
+              lineHeight: 1.15,
+              marginBottom: 20,
+              color: 'var(--color-bg-card)',
+            }}
+          >
+            What to do when something&apos;s{' '}
+            <span style={{ color: 'var(--color-teal-light)', fontStyle: 'italic' }}>gone wrong</span>
+          </h1>
+          <p
+            style={{
+              fontSize: 'var(--font-size-base)',
+              color: 'rgba(255, 255, 255, 0.85)',
+              fontWeight: 400,
+              maxWidth: 520,
+              margin: '0 auto 32px',
+              lineHeight: 1.7,
+            }}
+          >
+            Clear, Australian-focused guides for high-stress moments — so you can act fast and limit the damage.
+          </p>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/emergency" style={heroCtaPrimary}>
+              Get Help Now
+            </Link>
+            <Link href="/guides" style={heroCtaSecondary}>
+              Review guides
+            </Link>
+            <Link href="/stories" style={heroCtaSecondary}>
+              Read real incidents
+            </Link>
+          </div>
+        </section>
+      </div>
 
       <StatsBanner />
 
       <section
+        className="section-pad-y section-inset-x"
         style={{
           width: '100%',
-          padding: '56px 24px 60px',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          background: 'var(--color-bg-card)',
+          borderTop: '1px solid var(--color-border)',
+          borderBottom: '1px solid var(--color-border)',
         }}
       >
         <div style={{ maxWidth: 520, margin: '0 auto' }}>
-          <p
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              color: '#2DD4BF',
-              marginBottom: 8,
-              marginTop: 0,
-              textAlign: 'center',
-            }}
-          >
-            Early access
-          </p>
-          <h2
-            style={{
-              fontFamily: 'Syne, sans-serif',
-              fontSize: 26,
-              fontWeight: 700,
-              marginBottom: 24,
-              marginTop: 0,
-              color: '#F1F5F9',
-              textAlign: 'center',
-            }}
-          >
-            Be first to get access
-          </h2>
-          <WaitlistForm />
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 24px' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            flexWrap: 'wrap',
-            gap: 16,
-            marginBottom: 32,
-          }}
-        >
-          <div>
+          <div className="section-heading-wrap">
             <p
               style={{
                 fontSize: 11,
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
-                color: '#2DD4BF',
+                color: 'var(--color-teal)',
                 marginBottom: 8,
                 marginTop: 0,
               }}
             >
-              Emergency guides
+              Early access
             </p>
             <h2
               style={{
                 fontFamily: 'Syne, sans-serif',
-                fontSize: 28,
+                fontSize: 'var(--font-size-2xl)',
                 fontWeight: 700,
-                marginBottom: 6,
-                marginTop: 0,
-                color: '#F1F5F9',
-              }}
-            >
-              Emergency guides
-            </h2>
-            <p
-              style={{
-                fontSize: 15,
-                color: '#94A3B8',
                 marginBottom: 0,
                 marginTop: 0,
-                fontWeight: 300,
+                color: 'var(--color-navy)',
               }}
             >
-              Start with the situation closest to yours.
-            </p>
+              Be first to get access
+            </h2>
           </div>
+          <WaitlistForm />
+        </div>
+      </section>
+
+      <section className="section-pad-y section-inset-x" style={{ maxWidth: 1100, margin: '0 auto', background: 'var(--color-bg-page)' }}>
+        <div className="section-heading-wrap">
+          <p
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.12em',
+              color: 'var(--color-teal)',
+              marginBottom: 8,
+              marginTop: 0,
+            }}
+          >
+            Review Guides
+          </p>
+          <h2
+            style={{
+              fontFamily: 'Syne, sans-serif',
+              fontSize: 'var(--font-size-2xl)',
+              fontWeight: 700,
+              marginBottom: 6,
+              marginTop: 0,
+              color: 'var(--color-navy)',
+            }}
+          >
+            Review Guides
+          </h2>
+          <p
+            style={{
+              fontSize: 'var(--font-size-base)',
+              color: 'var(--color-text-secondary)',
+              marginBottom: 16,
+              marginTop: 0,
+              fontWeight: 400,
+            }}
+          >
+            Start with the situation closest to yours.
+          </p>
           <Link
             href="/guides"
             style={{
-              fontSize: 14,
+              fontSize: 'var(--font-size-sm)',
               fontWeight: 500,
-              color: '#2DD4BF',
+              color: 'var(--color-teal)',
               textDecoration: 'none',
             }}
           >
@@ -207,8 +202,8 @@ export default function HomePage() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: 16,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 20,
           }}
         >
           {guides.map((guide) => (

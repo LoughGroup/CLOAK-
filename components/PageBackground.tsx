@@ -19,7 +19,12 @@ interface Particle {
   rotationSpeed: number
 }
 
-export default function PageBackground() {
+type PageBackgroundProps = {
+  /** When true, fills the nearest positioned ancestor instead of the viewport. */
+  contained?: boolean
+}
+
+export default function PageBackground({ contained = false }: PageBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -30,10 +35,17 @@ export default function PageBackground() {
 
     let animationId: number
     let particles: Particle[] = []
+    let tealStroke = '#1A9E8F'
+
+    const readTealFromTokens = () => {
+      const v = getComputedStyle(document.documentElement).getPropertyValue('--color-teal').trim()
+      if (v) tealStroke = v
+    }
 
     const resize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
+      readTealFromTokens()
     }
 
     const init = () => {
@@ -83,7 +95,7 @@ export default function PageBackground() {
           if (dist < 140) {
             ctx.save()
             ctx.globalAlpha = (1 - dist / 140) * 0.06
-            ctx.strokeStyle = '#2DD4BF'
+            ctx.strokeStyle = tealStroke
             ctx.lineWidth = 0.5
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
@@ -97,6 +109,7 @@ export default function PageBackground() {
       animationId = requestAnimationFrame(draw)
     }
 
+    readTealFromTokens()
     resize()
     init()
     draw()
@@ -112,11 +125,11 @@ export default function PageBackground() {
     <canvas
       ref={canvasRef}
       style={{
-        position: 'fixed',
+        position: contained ? 'absolute' : 'fixed',
         top: 0,
         left: 0,
-        width: '100vw',
-        height: '100vh',
+        width: contained ? '100%' : '100vw',
+        height: contained ? '100%' : '100vh',
         zIndex: 0,
         pointerEvents: 'none',
       }}

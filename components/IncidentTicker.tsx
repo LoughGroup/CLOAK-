@@ -42,9 +42,9 @@ export default function IncidentTicker() {
   return (
     <div
       style={{
-        background: 'rgba(255,255,255,0.02)',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        background: 'var(--color-bg-page)',
+        borderTop: '1px solid var(--color-border)',
+        borderBottom: '1px solid var(--color-border)',
         padding: '10px 0',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -59,7 +59,7 @@ export default function IncidentTicker() {
           top: 0,
           bottom: 0,
           width: 80,
-          background: 'linear-gradient(to right, #0B0F1A, transparent)',
+          background: 'linear-gradient(to right, var(--color-bg-page), transparent)',
           zIndex: 2,
           pointerEvents: 'none',
         }}
@@ -72,7 +72,7 @@ export default function IncidentTicker() {
           top: 0,
           bottom: 0,
           width: 80,
-          background: 'linear-gradient(to left, #0B0F1A, transparent)',
+          background: 'linear-gradient(to left, var(--color-bg-page), transparent)',
           zIndex: 2,
           pointerEvents: 'none',
         }}
@@ -138,7 +138,7 @@ export default function IncidentTicker() {
               gap: 10,
               padding: '0 32px',
               textDecoration: 'none',
-              borderRight: '1px solid rgba(255,255,255,0.06)',
+              borderRight: '1px solid var(--color-border)',
               whiteSpace: 'nowrap',
             }}
           >
@@ -148,14 +148,14 @@ export default function IncidentTicker() {
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
-                color: SOURCE_COLORS[alert.source] || '#94A3B8',
+                color: SOURCE_COLORS[alert.source] || 'var(--color-text-secondary)',
                 flexShrink: 0,
               }}
             >
               {alert.source}
             </span>
-            <span style={{ fontSize: 13, color: '#94A3B8' }}>{alert.title}</span>
-            <span style={{ fontSize: 11, color: '#475569', flexShrink: 0 }}>
+            <span style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>{alert.title}</span>
+            <span style={{ fontSize: 11, color: 'var(--color-text-secondary)', flexShrink: 0 }}>
               {new Date(alert.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' })}
             </span>
           </a>

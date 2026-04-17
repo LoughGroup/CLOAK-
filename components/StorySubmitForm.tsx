@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Card } from '@/components/ui/Card'
 
 const AU_STATES = ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA']
 
@@ -18,12 +19,12 @@ const CATEGORIES = [
 const OUTCOMES = ['Fully resolved', 'Partially resolved', 'Still ongoing'] as const
 
 const fieldBase: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.05)',
-  border: '1px solid rgba(255,255,255,0.1)',
+  background: 'var(--color-bg-page)',
+  border: '1px solid var(--color-border)',
   borderRadius: 8,
   padding: '12px 16px',
   fontSize: 14,
-  color: '#F1F5F9',
+  color: 'var(--color-text-primary)',
   outline: 'none',
   fontFamily: 'DM Sans, sans-serif',
   width: '100%',
@@ -89,8 +90,8 @@ export default function StorySubmitForm() {
     return (
       <div
         style={{
-          background: 'rgba(45,212,191,0.08)',
-          border: '1px solid rgba(45,212,191,0.25)',
+          background: 'var(--color-teal-muted)',
+          border: '1px solid rgba(26,158,143,0.35)',
           borderRadius: 12,
           padding: '32px 24px',
           textAlign: 'center',
@@ -104,7 +105,7 @@ export default function StorySubmitForm() {
             fontFamily: 'Syne, sans-serif',
             fontWeight: 700,
             fontSize: 17,
-            color: '#F1F5F9',
+            color: 'var(--color-text-primary)',
             margin: 0,
             lineHeight: 1.55,
           }}
@@ -116,14 +117,7 @@ export default function StorySubmitForm() {
   }
 
   return (
-    <div
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: 16,
-        padding: '32px 28px',
-      }}
-    >
+    <Card variant="default" style={{ borderRadius: 'var(--radius-xl)', padding: '32px 28px' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <input
           type="text"
@@ -137,7 +131,7 @@ export default function StorySubmitForm() {
           onChange={(e) => setLocation(e.target.value)}
           style={{
             ...fieldBase,
-            color: location ? '#F1F5F9' : '#64748B',
+            color: location ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
             cursor: 'pointer',
           }}
         >
@@ -153,7 +147,7 @@ export default function StorySubmitForm() {
           onChange={(e) => setCategory(e.target.value)}
           style={{
             ...fieldBase,
-            color: category ? '#F1F5F9' : '#64748B',
+            color: category ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
             cursor: 'pointer',
           }}
         >
@@ -190,7 +184,7 @@ export default function StorySubmitForm() {
           onChange={(e) => setOutcome(e.target.value)}
           style={{
             ...fieldBase,
-            color: outcome ? '#F1F5F9' : '#64748B',
+            color: outcome ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
             cursor: 'pointer',
           }}
         >
@@ -215,8 +209,8 @@ export default function StorySubmitForm() {
           onClick={handleSubmit}
           disabled={!canSubmit}
           style={{
-            background: canSubmit ? '#2DD4BF' : 'rgba(45,212,191,0.3)',
-            color: '#0B0F1A',
+            background: canSubmit ? 'var(--color-teal)' : 'rgba(26,158,143,0.35)',
+            color: 'var(--color-navy)',
             fontWeight: 700,
             padding: '13px 0',
             borderRadius: 8,
@@ -242,6 +236,6 @@ export default function StorySubmitForm() {
           {errorMessage}
         </p>
       )}
-    </div>
+    </Card>
   )
 }

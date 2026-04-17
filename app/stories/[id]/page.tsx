@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import AppBanner from '@/components/AppBanner'
+import { Card } from '@/components/ui/Card'
 import { getGuideBySlug } from '@/lib/guides'
 import { getAllStories, getStoryById, type Story } from '@/lib/stories'
 
@@ -41,8 +42,8 @@ const outcomeStyles: Record<
   },
   resolved: {
     label: 'Resolved',
-    dot: '#2DD4BF',
-    text: '#2DD4BF',
+    dot: '#1A9E8F',
+    text: '#1A9E8F',
   },
   ongoing: {
     label: 'Ongoing',
@@ -56,14 +57,14 @@ const sectionLabelStyle: React.CSSProperties = {
   fontWeight: 700,
   textTransform: 'uppercase',
   letterSpacing: '0.12em',
-  color: '#2DD4BF',
+  color: 'var(--color-teal)',
   marginBottom: 12,
   marginTop: 0,
 }
 
 const bodyParagraphStyle: React.CSSProperties = {
   fontSize: 16,
-  color: '#CBD5E1',
+  color: 'var(--color-text-secondary)',
   lineHeight: 1.8,
   fontWeight: 300,
   margin: 0,
@@ -80,13 +81,13 @@ export default async function StoryDetailPage({ params }: Props) {
   const relatedGuide = getGuideBySlug(story.relatedGuideSlug)
 
   return (
-    <div style={{ background: '#0B0F1A', minHeight: '100vh' }}>
+    <div style={{ background: 'var(--color-bg-page)', minHeight: '100vh' }}>
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '24px 24px 0' }}>
         <Link
           href="/stories"
           style={{
             fontSize: 13,
-            color: '#94A3B8',
+            color: 'var(--color-text-secondary)',
             textDecoration: 'none',
             display: 'inline-block',
             marginBottom: 24,
@@ -98,8 +99,8 @@ export default async function StoryDetailPage({ params }: Props) {
 
       <header
         style={{
-          background: '#111827',
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          background: '#FFFFFF',
+          borderBottom: '1px solid var(--color-border)',
           padding: '48px 24px',
           maxWidth: 860,
           margin: '0 auto',
@@ -111,7 +112,7 @@ export default async function StoryDetailPage({ params }: Props) {
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
-            color: '#2DD4BF',
+            color: 'var(--color-teal)',
             margin: '0 0 12px',
           }}
         >
@@ -123,7 +124,7 @@ export default async function StoryDetailPage({ params }: Props) {
             fontWeight: 800,
             fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
             lineHeight: 1.2,
-            color: '#F1F5F9',
+            color: 'var(--color-text-primary)',
             margin: '0 0 24px',
           }}
         >
@@ -142,8 +143,8 @@ export default async function StoryDetailPage({ params }: Props) {
                 fontFamily: 'Syne, sans-serif',
                 fontSize: 13,
                 fontWeight: 700,
-                color: '#F1F5F9',
-                background: 'rgba(45,212,191,0.12)',
+                color: 'var(--color-text-primary)',
+                background: 'rgba(26,158,143,0.12)',
                 flexShrink: 0,
               }}
               aria-hidden
@@ -151,8 +152,8 @@ export default async function StoryDetailPage({ params }: Props) {
               {story.initials}
             </div>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 600, color: '#F1F5F9' }}>{story.firstName}</div>
-              <div style={{ fontSize: 13, color: '#94A3B8' }}>
+              <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--color-text-primary)' }}>{story.firstName}</div>
+              <div style={{ fontSize: 13, color: 'var(--color-text-secondary)' }}>
                 {story.location} · {story.incidentDate}
               </div>
             </div>
@@ -180,7 +181,7 @@ export default async function StoryDetailPage({ params }: Props) {
           />
           {outcome.label}
           {story.daysToResolve != null ? (
-            <span style={{ color: '#94A3B8', fontWeight: 500 }}> · {story.daysToResolve} days to resolve</span>
+            <span style={{ color: 'var(--color-text-secondary)', fontWeight: 500 }}> · {story.daysToResolve} days to resolve</span>
           ) : null}
         </span>
       </header>
@@ -195,11 +196,11 @@ export default async function StoryDetailPage({ params }: Props) {
           <p style={sectionLabelStyle}>How they felt</p>
           <blockquote
             style={{
-              borderLeft: '3px solid rgba(45,212,191,0.4)',
+              borderLeft: '3px solid rgba(26,158,143,0.45)',
               paddingLeft: 20,
               margin: 0,
               fontSize: 16,
-              color: '#94A3B8',
+              color: 'var(--color-text-secondary)',
               fontStyle: 'italic',
               lineHeight: 1.8,
             }}
@@ -226,8 +227,8 @@ export default async function StoryDetailPage({ params }: Props) {
                     width: 24,
                     height: 24,
                     borderRadius: '50%',
-                    background: 'rgba(45,212,191,0.12)',
-                    color: '#2DD4BF',
+                    background: 'rgba(26,158,143,0.12)',
+                    color: 'var(--color-teal)',
                     fontSize: 12,
                     fontWeight: 700,
                     flexShrink: 0,
@@ -239,7 +240,7 @@ export default async function StoryDetailPage({ params }: Props) {
                 >
                   {index + 1}
                 </span>
-                <span style={{ fontSize: 15, color: '#CBD5E1', lineHeight: 1.7, paddingTop: 1 }}>{step}</span>
+                <span style={{ fontSize: 15, color: 'var(--color-text-secondary)', lineHeight: 1.7, paddingTop: 1 }}>{step}</span>
               </li>
             ))}
           </ol>
@@ -252,12 +253,9 @@ export default async function StoryDetailPage({ params }: Props) {
 
         <section style={{ marginBottom: 0 }}>
           <p style={sectionLabelStyle}>What they wish they&apos;d known</p>
-          <div
-            style={{
+          <Card variant="amber" style={{ borderRadius: 'var(--radius-md)', padding: 20,
               background: 'rgba(245,158,11,0.08)',
               border: '1px solid rgba(245,158,11,0.2)',
-              borderRadius: 10,
-              padding: 20,
             }}
           >
             <p
@@ -273,27 +271,20 @@ export default async function StoryDetailPage({ params }: Props) {
             >
               Heads up
             </p>
-            <p style={{ fontSize: 15, color: '#CBD5E1', lineHeight: 1.7, margin: 0 }}>{story.whatTheyWishTheyKnew}</p>
-          </div>
+            <p style={{ fontSize: 15, color: 'var(--color-text-secondary)', lineHeight: 1.7, margin: 0 }}>{story.whatTheyWishTheyKnew}</p>
+          </Card>
         </section>
       </div>
 
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px 48px' }}>
-        <div
-          style={{
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
-            borderRadius: 12,
-            padding: 20,
-          }}
-        >
+        <Card variant="default" style={{ padding: 20, borderRadius: 12 }}>
           <p
             style={{
               fontSize: 11,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
-              color: '#2DD4BF',
+              color: 'var(--color-teal)',
               margin: '0 0 12px',
             }}
           >
@@ -304,7 +295,7 @@ export default async function StoryDetailPage({ params }: Props) {
             style={{
               fontSize: 15,
               fontWeight: 600,
-              color: '#F1F5F9',
+              color: 'var(--color-text-primary)',
               textDecoration: 'none',
               display: 'inline-flex',
               alignItems: 'center',
@@ -312,11 +303,11 @@ export default async function StoryDetailPage({ params }: Props) {
             }}
           >
             {relatedGuide?.title ?? 'View guide'}
-            <span style={{ color: '#2DD4BF' }} aria-hidden>
+            <span style={{ color: 'var(--color-teal)' }} aria-hidden>
               →
             </span>
           </Link>
-        </div>
+        </Card>
       </div>
 
       <AppBanner />

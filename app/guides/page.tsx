@@ -1,30 +1,40 @@
 import type { Metadata } from 'next'
-import GuideCard from '@/components/GuideCard'
+import GuidesIndexClient from '@/components/GuidesIndexClient'
 import { getAllGuides } from '@/lib/guides'
 
 export const metadata: Metadata = {
-  title: 'Emergency guides',
-  description: 'Step-by-step recovery guides for Australians — phone theft, fraud, hacked accounts, and more.',
+  title: 'Review Guides',
+  description:
+    'Step-by-step recovery guides for every incident type. Know what to do before you ever need it.',
 }
 
-export default function GuidesPage() {
+export default function GuidesIndexPage() {
   const guides = getAllGuides()
 
   return (
-    <div className="mx-auto max-w-[1100px] px-4 py-12 sm:px-6 lg:py-16">
-      <header className="max-w-2xl">
-        <p className="mb-2 text-[11px] font-normal uppercase tracking-[0.12em] text-[#2DD4BF]">Emergency guides</p>
-        <h1 className="font-[family-name:'Syne',sans-serif] text-[1.75rem] font-bold text-[#F1F5F9] sm:text-4xl">
-          Emergency guides
-        </h1>
-        <p className="mt-3 text-[#94A3B8]">
-          Practical checklists you can follow under pressure — written for Australian numbers, institutions, and timelines.
-        </p>
-      </header>
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {guides.map((guide) => (
-          <GuideCard key={guide.slug} guide={guide} />
-        ))}
+    <div style={{ background: 'var(--color-bg-page)', minHeight: '100vh' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 24px 64px' }}>
+        <header style={{ maxWidth: 720, marginBottom: 32 }}>
+          <h1
+            style={{
+              fontFamily: 'Syne, sans-serif',
+              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+              fontWeight: 700,
+              color: 'var(--color-navy)',
+              margin: '0 0 16px',
+              lineHeight: 1.2,
+            }}
+          >
+            Review Guides
+          </h1>
+          <p style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.7 }}>
+            Step-by-step recovery guides for every incident type.
+            <br />
+            Know what to do before you ever need it.
+          </p>
+        </header>
+
+        <GuidesIndexClient guides={guides} />
       </div>
     </div>
   )

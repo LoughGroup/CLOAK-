@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import PageBackground from '@/components/PageBackground'
-import Nav from '@/components/Nav'
+import Nav from '../components/Nav'
 import IncidentTicker from '@/components/IncidentTicker'
-import Footer from '@/components/Footer'
+import Footer from '../components/Footer'
 
 export const metadata: Metadata = {
   title: {
@@ -27,8 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-AU">
-      <body style={{ background: 'transparent' }}>
-        <PageBackground />
+      <body>
         <div style={{ position: 'relative', zIndex: 1, background: 'transparent' }}>
           <Nav />
           <IncidentTicker />

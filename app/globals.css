@@ -3,37 +3,124 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Tailwind v4 source globs (utilities used outside /app). */
+@source "../components/**/*.{ts,tsx}";
+@source "../content/**/*.{md,mdx}";
+@source "../lib/**/*.{ts,tsx}";
+
 :root {
-  --bg: #0B0F1A;
-  --navy: #111827;
-  --mid: #1E2840;
-  --accent: #2DD4BF;
-  --accent2: #F59E0B;
-  --text: #F1F5F9;
-  --muted: #94A3B8;
-  --border: rgba(255,255,255,0.08);
-  --card: rgba(255,255,255,0.04);
+  /* Colours */
+  --color-navy: #0f1f3d;
+  --color-navy-light: #1a2f5a;
+  --color-teal: #1a9e8f;
+  --color-teal-light: #22b5a4;
+  --color-teal-muted: #e6f7f5;
+  --color-teal-border: #a8ddd8;
+  --color-amber: #d97706;
+  --color-amber-light: #fef3c7;
+  --color-bg-page: #f8f9fb;
+  --color-bg-card: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-teal: #a8ddd8;
+  --color-text-primary: #0f1f3d;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-avatar-bg: #e6f7f5;
+  --color-avatar-text: #1a9e8f;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  /* Spacing */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  /* Legacy aliases */
+  --bg: var(--color-bg-page);
+  --navy: var(--color-navy);
+  --mid: var(--color-navy-light);
+  --accent: var(--color-teal);
+  --accent2: var(--color-amber);
+  --text: var(--color-text-primary);
+  --muted: var(--color-text-secondary);
+  --border: var(--color-border);
+  --card: var(--color-bg-card);
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
 html {
-  background: #0B0F1A;
+  background: var(--color-bg-page);
   min-height: 100%;
 }
+
 body {
-  background: transparent;
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
-h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-navy);
+  line-height: 1.3;
+}
+
+p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-teal);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 32px;
 }
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -43,8 +130,47 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
 .nav-menu-button {
   display: flex;
 }
+
 @media (min-width: 769px) {
   .nav-menu-button {
     display: none;
   }
+}
+
+/* Homepage / marketing sections — vertical rhythm */
+.section-pad-y {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+@media (min-width: 769px) {
+  .section-pad-y {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.section-heading-wrap {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.section-inset-x {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Nav — design system */
+.nav-link {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--color-bg-card);
 }

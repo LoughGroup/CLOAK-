@@ -8,13 +8,13 @@ export default function AppBanner({
   subline = 'Checklists, contacts, and secure notes — built for stressful moments.',
 }: AppBannerProps) {
   const storeButtonStyle: React.CSSProperties = {
-    background: 'rgba(255,255,255,0.06)',
-    border: '1px solid rgba(255,255,255,0.1)',
+    background: 'var(--color-bg-card)',
+    border: '1px solid var(--color-border)',
     borderRadius: 8,
     padding: '10px 20px',
     fontSize: 13,
     fontWeight: 500,
-    color: '#F1F5F9',
+    color: 'var(--color-text-primary)',
     cursor: 'pointer',
     fontFamily: 'DM Sans, sans-serif',
     textDecoration: 'none',
@@ -24,11 +24,11 @@ export default function AppBanner({
   }
 
   return (
-    <section id="app" style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px 60px' }}>
+    <section id="app" className="section-pad-y section-inset-x" style={{ maxWidth: 1100, margin: '0 auto' }}>
       <div
         style={{
-          background: 'linear-gradient(135deg, rgba(45,212,191,0.08) 0%, rgba(30,40,64,0.5) 100%)',
-          border: '1px solid rgba(45,212,191,0.25)',
+          background: 'var(--color-teal-muted)',
+          border: '1px solid rgba(26,158,143,0.25)',
           borderRadius: 16,
           padding: 40,
           display: 'flex',
@@ -44,7 +44,7 @@ export default function AppBanner({
               fontFamily: 'Syne, sans-serif',
               fontWeight: 700,
               fontSize: 22,
-              color: '#F1F5F9',
+              color: 'var(--color-text-primary)',
               marginBottom: 8,
               marginTop: 0,
             }}
@@ -52,7 +52,7 @@ export default function AppBanner({
             {headline}
           </h2>
           {subline ? (
-            <p style={{ fontSize: 14, color: '#94A3B8', fontWeight: 300, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 14, color: 'var(--color-text-secondary)', fontWeight: 300, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
               {subline}
             </p>
           ) : null}
