@@ -9,6 +9,7 @@ import AppBanner from '@/components/AppBanner'
 import CrossIncidentCard from '@/components/CrossIncidentCard'
 import { EmergencyStep, EmergencySteps } from '@/components/EmergencySteps'
 import PartnerCard from '@/components/PartnerCard'
+import { FadeIn, FadeUp } from '@/components/animation'
 import { getGuideBySlug, getAllGuides } from '@/lib/guides'
 import { getPartnersForGuide } from '@/lib/partners'
 
@@ -67,13 +68,19 @@ export default async function GuideArticlePage({ params }: Props) {
             ← All guides
           </Link>
           <p className="mt-6 text-[11px] font-normal uppercase tracking-wider text-[var(--color-teal)]">{guide.category}</p>
-          <h1 className="mt-2 font-[family-name:'Syne',sans-serif] text-[2rem] font-extrabold leading-[1.2] text-[var(--color-text-primary)]">
-            {guide.title}
-          </h1>
-          <p className="mt-4 text-lg font-light text-[var(--color-text-secondary)]">{guide.description}</p>
-          <div className="mt-6 rounded-lg border-l-[3px] border-l-[#D97706] bg-[#FEF3C7] px-4 py-3 text-[14px] text-[#92400E]">
-            Can&apos;t access your phone? Open Cloak on a friend&apos;s phone or call them directly using the numbers below.
-          </div>
+          <FadeIn delay={0}>
+            <h1 className="mt-2 font-[family-name:'Syne',sans-serif] text-[2rem] font-extrabold leading-[1.2] text-[var(--color-text-primary)]">
+              {guide.title}
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-4 text-lg font-light text-[var(--color-text-secondary)]">{guide.description}</p>
+          </FadeIn>
+          <FadeUp delay={0.2}>
+            <div className="mt-6 rounded-lg border-l-[3px] border-l-[#D97706] bg-[#FEF3C7] px-4 py-3 text-[14px] text-[#92400E]">
+              Can&apos;t access your phone? Open Cloak on a friend&apos;s phone or call them directly using the numbers below.
+            </div>
+          </FadeUp>
           <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-[var(--color-text-secondary)]">
             <span className="inline-flex items-center gap-1.5">
               <Clock className="h-4 w-4 shrink-0" aria-hidden />
@@ -108,9 +115,11 @@ export default async function GuideArticlePage({ params }: Props) {
         />
       </div>
 
-      <div className="mx-auto max-w-[720px] px-4 sm:px-0">
-        <CrossIncidentCard incidentKey={incidentKey} allGuides={allGuides} />
-      </div>
+      <FadeUp delay={0}>
+        <div className="mx-auto max-w-[720px] px-4 sm:px-0">
+          <CrossIncidentCard incidentKey={incidentKey} allGuides={allGuides} />
+        </div>
+      </FadeUp>
 
       {partners.length > 0 ? (
         <section className="mx-auto mt-16 max-w-[1100px] border-t border-[var(--color-border)] bg-[var(--color-bg-page)] px-4 pt-12 sm:px-6">

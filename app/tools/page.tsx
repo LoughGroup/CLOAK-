@@ -3,6 +3,7 @@ import AppBanner from '@/components/AppBanner'
 import PartnerCard from '@/components/PartnerCard'
 import { ProductCard } from '@/components/ProductCard'
 import { Card } from '@/components/ui/Card'
+import { FadeIn, FadeUp } from '@/components/animation'
 import { contextualProducts } from '@/lib/contextualProducts'
 import { partners } from '@/lib/partners'
 
@@ -29,22 +30,26 @@ export default function ToolsPage() {
           >
             Trusted Tools & Products
           </p>
-          <h1
-            style={{
-              fontFamily: 'Syne, sans-serif',
-              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
-              fontWeight: 700,
-              color: 'var(--color-text-primary)',
-              margin: '0 0 12px',
-              lineHeight: 1.2,
-            }}
-          >
-            Trusted Tools & Products
-          </h1>
-          <p style={{ fontSize: 15, color: 'var(--color-text-secondary)', fontWeight: 300, margin: 0, lineHeight: 1.7 }}>
-            Vetted partners that pair well with our guides. Compare what fits your situation — we list why each one
-            matters.
-          </p>
+          <FadeIn delay={0}>
+            <h1
+              style={{
+                fontFamily: 'Syne, sans-serif',
+                fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                fontWeight: 700,
+                color: 'var(--color-text-primary)',
+                margin: '0 0 12px',
+                lineHeight: 1.2,
+              }}
+            >
+              Trusted Tools & Products
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p style={{ fontSize: 15, color: 'var(--color-text-secondary)', fontWeight: 300, margin: 0, lineHeight: 1.7 }}>
+              Vetted partners that pair well with our guides. Compare what fits your situation — we list why each one
+              matters.
+            </p>
+          </FadeIn>
         </header>
         <div
           style={{
@@ -53,8 +58,10 @@ export default function ToolsPage() {
             gap: 16,
           }}
         >
-          {partners.map((p) => (
-            <PartnerCard key={p.id} partner={p} />
+          {partners.map((p, index) => (
+            <FadeUp key={p.id} delay={Math.min(0.1 * index, 0.4)}>
+              <PartnerCard partner={p} />
+            </FadeUp>
           ))}
         </div>
 
@@ -72,18 +79,20 @@ export default function ToolsPage() {
           >
             Recommended prevention gear
           </p>
-          <h2
-            style={{
-              fontFamily: 'Syne, sans-serif',
-              fontSize: 'clamp(1.35rem, 3vw, 1.75rem)',
-              fontWeight: 700,
-              color: 'var(--color-navy)',
-              margin: '0 0 12px',
-              lineHeight: 1.2,
-            }}
-          >
-            Products That Help Prevent This Happening Again
-          </h2>
+          <FadeUp delay={0}>
+            <h2
+              style={{
+                fontFamily: 'Syne, sans-serif',
+                fontSize: 'clamp(1.35rem, 3vw, 1.75rem)',
+                fontWeight: 700,
+                color: 'var(--color-navy)',
+                margin: '0 0 12px',
+                lineHeight: 1.2,
+              }}
+            >
+              Products That Help Prevent This Happening Again
+            </h2>
+          </FadeUp>
           <p style={{ fontSize: 15, color: 'var(--color-text-secondary)', fontWeight: 300, margin: '0 0 20px', lineHeight: 1.7 }}>
             Vetted products used by Australians to protect their phones, wallets, keys, and identity.
           </p>
@@ -94,8 +103,10 @@ export default function ToolsPage() {
             </p>
           </Card>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            {contextualProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {contextualProducts.map((product, index) => (
+              <FadeUp key={product.id} delay={Math.min(0.1 * index, 0.4)}>
+                <ProductCard product={product} />
+              </FadeUp>
             ))}
           </div>
         </section>

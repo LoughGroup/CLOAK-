@@ -28,7 +28,7 @@ export default function AppBanner({
       <div
         style={{
           background: 'var(--color-teal-muted)',
-          border: '1px solid rgba(26,158,143,0.25)',
+          border: '1px solid var(--color-teal-border)',
           borderRadius: 16,
           padding: 40,
           display: 'flex',

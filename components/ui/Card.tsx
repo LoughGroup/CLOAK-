@@ -15,7 +15,7 @@ export function Card({
   const borderColor = {
     default: 'var(--color-border)',
     teal: 'var(--color-border-teal)',
-    amber: '#D97706',
+    amber: 'var(--color-amber)',
     flat: 'var(--color-border)',
   }[variant]
 

@@ -13,7 +13,7 @@ const logoStyle: CSSProperties = {
 const linkStyle: CSSProperties = {
   display: 'block',
   fontSize: 'var(--font-size-sm)',
-  color: 'rgba(255, 255, 255, 0.65)',
+  color: 'rgb(var(--color-white-rgb) / 0.65)',
   textDecoration: 'none',
   marginBottom: 8,
 }
@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        borderTop: '1px solid rgb(var(--color-white-rgb) / 0.1)',
         padding: '48px 24px 32px',
         marginTop: 80,
         background: 'var(--color-navy)',
@@ -46,7 +46,7 @@ export default function Footer() {
             <p
               style={{
                 fontSize: 'var(--font-size-sm)',
-                color: 'rgba(255, 255, 255, 0.65)',
+                color: 'rgb(var(--color-white-rgb) / 0.65)',
                 maxWidth: 260,
                 lineHeight: 1.6,
                 marginTop: 8,
@@ -109,19 +109,19 @@ export default function Footer() {
         </div>
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            borderTop: '1px solid rgb(var(--color-white-rgb) / 0.1)',
             paddingTop: 24,
             display: 'flex',
             flexDirection: 'column',
             gap: 12,
             fontSize: 'var(--font-size-sm)',
-            color: 'rgba(255, 255, 255, 0.65)',
+            color: 'rgb(var(--color-white-rgb) / 0.65)',
           }}
         >
           <p style={{ margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
             CLOAK does not provide legal, financial, or medical advice. In an emergency call 000.
           </p>
-          <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.65)' }}>
+          <p style={{ margin: 0, color: 'rgb(var(--color-white-rgb) / 0.65)' }}>
             © {new Date().getFullYear()} CLOAK. All rights reserved.
           </p>
         </div>

@@ -36,7 +36,7 @@ export default function Nav() {
         top: 0,
         zIndex: 50,
         background: 'var(--color-navy)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        borderBottom: '1px solid rgb(var(--color-white-rgb) / 0.1)',
         backdropFilter: 'blur(12px)',
       }}
     >
@@ -113,7 +113,8 @@ export default function Nav() {
                 width: '100%',
                 boxSizing: 'border-box',
                 padding: '16px 24px',
-                borderBottom: i < links.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+                borderBottom:
+                  i < links.length - 1 ? '1px solid rgb(var(--color-white-rgb) / 0.1)' : 'none',
               }}
               onClick={() => setOpen(false)}
             >
@@ -123,7 +124,7 @@ export default function Nav() {
           <div
             style={{
               padding: '16px 24px',
-              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+              borderTop: '1px solid rgb(var(--color-white-rgb) / 0.1)',
             }}
           >
             <a

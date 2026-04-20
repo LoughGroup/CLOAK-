@@ -19,12 +19,12 @@ const urgencyBadgeStyle = (urgency: Guide['urgency']): React.CSSProperties => {
     borderRadius: 4,
   }
   if (urgency === 'urgent') {
-    return { ...base, background: 'rgba(239,68,68,0.12)', color: '#F87171' }
+    return { ...base, background: 'var(--color-danger-muted)', color: 'var(--color-danger)' }
   }
   if (urgency === 'high-risk') {
-    return { ...base, background: 'rgba(245,158,11,0.12)', color: '#FBBF24' }
+    return { ...base, background: 'var(--color-warning-muted)', color: 'var(--color-warning)' }
   }
-  return { ...base, background: 'rgba(26,158,143,0.12)', color: 'var(--color-teal)' }
+  return { ...base, background: 'var(--color-teal-muted)', color: 'var(--color-teal)' }
 }
 
 export default function GuideCard({ guide }: Props) {
@@ -40,7 +40,7 @@ export default function GuideCard({ guide }: Props) {
         height: '100%',
         transition: 'border-color 0.2s',
       }}
-      onMouseEnter={() => setBorderColor('rgba(26,158,143,0.45)')}
+      onMouseEnter={() => setBorderColor('var(--color-teal-border)')}
       onMouseLeave={() => setBorderColor('var(--color-border)')}
     >
       <Card

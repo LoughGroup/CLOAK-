@@ -5,6 +5,7 @@ import GuideCard from '@/components/GuideCard'
 import PageBackground from '@/components/PageBackground'
 import StatsBanner from '@/components/StatsBanner'
 import WaitlistForm from '@/components/WaitlistForm'
+import { FadeUp } from '@/components/animation'
 import { getAllGuides } from '@/lib/guides'
 
 const heroCtaPrimary: CSSProperties = {
@@ -38,7 +39,7 @@ export default function HomePage() {
 
   return (
     <div style={{ background: 'var(--color-bg-page)', minHeight: '100vh' }}>
-      <div style={{ position: 'relative', background: 'var(--color-navy)', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', background: 'var(--color-bg-page)', overflow: 'hidden' }}>
         <PageBackground contained />
         <section
           className="section-pad-y section-inset-x"
@@ -55,58 +56,66 @@ export default function HomePage() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
-              background: 'rgba(26, 158, 143, 0.12)',
-              border: '1px solid rgba(26, 158, 143, 0.35)',
+              background: 'var(--color-teal-muted)',
+              border: '1px solid var(--color-teal-border)',
               borderRadius: 999,
               padding: '5px 16px',
               fontSize: 'var(--font-size-sm)',
               fontWeight: 600,
-              color: 'var(--color-teal-light)',
+              color: 'var(--color-teal)',
               marginBottom: 24,
             }}
           >
             Australia&apos;s recovery resource
           </div>
-          <h1
-            style={{
-              fontFamily: 'Syne, sans-serif',
-              fontSize: 'var(--font-size-3xl)',
-              fontWeight: 700,
-              lineHeight: 1.15,
-              marginBottom: 20,
-              color: 'var(--color-bg-card)',
-            }}
-          >
-            What to do when something&apos;s{' '}
-            <span style={{ color: 'var(--color-teal-light)', fontStyle: 'italic' }}>gone wrong</span>
-          </h1>
-          <p
-            style={{
-              fontSize: 'var(--font-size-base)',
-              color: 'rgba(255, 255, 255, 0.85)',
-              fontWeight: 400,
-              maxWidth: 520,
-              margin: '0 auto 32px',
-              lineHeight: 1.7,
-            }}
-          >
-            Clear, Australian-focused guides for high-stress moments — so you can act fast and limit the damage.
-          </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/emergency" style={heroCtaPrimary}>
-              Get Help Now
-            </Link>
-            <Link href="/guides" style={heroCtaSecondary}>
-              Review guides
-            </Link>
-            <Link href="/stories" style={heroCtaSecondary}>
-              Read real incidents
-            </Link>
-          </div>
+          <FadeUp delay={0}>
+            <h1
+              style={{
+                fontFamily: 'Syne, sans-serif',
+                fontSize: 'var(--font-size-3xl)',
+                fontWeight: 700,
+                lineHeight: 1.15,
+                marginBottom: 20,
+                color: 'var(--color-navy)',
+              }}
+            >
+              What to do when something&apos;s{' '}
+              <span style={{ color: 'var(--color-teal)', fontStyle: 'italic' }}>gone wrong</span>
+            </h1>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p
+              style={{
+                fontSize: 'var(--font-size-base)',
+                color: 'var(--color-text-secondary)',
+                fontWeight: 400,
+                maxWidth: 520,
+                margin: '0 auto 32px',
+                lineHeight: 1.7,
+              }}
+            >
+              Clear, Australian-focused guides for high-stress moments — so you can act fast and limit the damage.
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/emergency" style={heroCtaPrimary}>
+                Get Help Now
+              </Link>
+              <Link href="/guides" style={heroCtaSecondary}>
+                Review guides
+              </Link>
+              <Link href="/stories" style={heroCtaSecondary}>
+                Read real incidents
+              </Link>
+            </div>
+          </FadeUp>
         </section>
       </div>
 
-      <StatsBanner />
+      <FadeUp delay={0}>
+        <StatsBanner />
+      </FadeUp>
 
       <section
         className="section-pad-y section-inset-x"
@@ -206,8 +215,10 @@ export default function HomePage() {
             gap: 20,
           }}
         >
-          {guides.map((guide) => (
-            <GuideCard key={guide.slug} guide={guide} />
+          {guides.map((guide, index) => (
+            <FadeUp key={guide.slug} delay={0.1 * index}>
+              <GuideCard guide={guide} />
+            </FadeUp>
           ))}
         </div>
       </section>

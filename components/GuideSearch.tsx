@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Search } from 'lucide-react'
 import type { Guide } from '@/types'
 import { Card } from '@/components/ui/Card'
+import { FadeUp } from '@/components/animation'
 import { createSmartSearch, type SearchableGuide } from '@/lib/smartSearch'
 
 const categoryStyle: CSSProperties = {
@@ -70,55 +71,57 @@ export function GuideSearch({ guides }: { guides: Guide[] }) {
 
   return (
     <>
-      <div style={{ marginBottom: 28 }}>
-        <label
-          htmlFor="guides-search"
-          style={{
-            display: 'block',
-            fontSize: 'var(--font-size-sm)',
-            fontWeight: 600,
-            color: 'var(--color-text-secondary)',
-            marginBottom: 8,
-          }}
-        >
-          Search guides
-        </label>
-        <div style={{ position: 'relative', maxWidth: 560 }}>
-          <Search
-            size={18}
-            aria-hidden
+      <FadeUp delay={0.2}>
+        <div style={{ marginBottom: 28 }}>
+          <label
+            htmlFor="guides-search"
             style={{
-              position: 'absolute',
-              left: 14,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              color: 'var(--color-text-muted)',
-              pointerEvents: 'none',
+              display: 'block',
+              fontSize: 'var(--font-size-sm)',
+              fontWeight: 600,
+              color: 'var(--color-text-secondary)',
+              marginBottom: 8,
             }}
-          />
-          <input
-            id="guides-search"
-            type="search"
-            name="guides-search"
-            autoComplete="off"
-            placeholder="Search by topic, incident type, or keyword…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="guides-search-input"
-            style={{
-              width: '100%',
-              padding: '12px 14px 12px 44px',
-              fontSize: 'var(--font-size-base)',
-              fontFamily: 'DM Sans, sans-serif',
-              border: '1px solid var(--color-border)',
-              borderRadius: 'var(--radius-md)',
-              background: 'var(--color-bg-card)',
-              color: 'var(--color-text-primary)',
-              boxShadow: 'var(--shadow-card)',
-            }}
-          />
+          >
+            Search guides
+          </label>
+          <div style={{ position: 'relative', maxWidth: 560 }}>
+            <Search
+              size={18}
+              aria-hidden
+              style={{
+                position: 'absolute',
+                left: 14,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                color: 'var(--color-text-muted)',
+                pointerEvents: 'none',
+              }}
+            />
+            <input
+              id="guides-search"
+              type="search"
+              name="guides-search"
+              autoComplete="off"
+              placeholder="Search by topic, incident type, or keyword…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="guides-search-input"
+              style={{
+                width: '100%',
+                padding: '12px 14px 12px 44px',
+                fontSize: 'var(--font-size-base)',
+                fontFamily: 'DM Sans, sans-serif',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-md)',
+                background: 'var(--color-bg-card)',
+                color: 'var(--color-text-primary)',
+                boxShadow: 'var(--shadow-card)',
+              }}
+            />
+          </div>
         </div>
-      </div>
+      </FadeUp>
 
       {results.length === 0 && query.trim() !== '' ? (
         <p

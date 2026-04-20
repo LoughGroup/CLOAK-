@@ -3,6 +3,7 @@ import PageBackground from '@/components/PageBackground'
 import { Avatar } from '@/components/ui/Avatar'
 import { Card } from '@/components/ui/Card'
 import { StatusPill } from '@/components/ui/StatusPill'
+import { FadeIn, FadeUp } from '@/components/animation'
 
 export const metadata: Metadata = {
   title: 'How it works',
@@ -126,31 +127,35 @@ export default function AboutPage() {
         >
           Free to download · iOS & Android
         </div>
-        <h1
-          style={{
-            fontFamily: 'Syne, sans-serif',
-            fontWeight: 800,
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            color: '#F8F9FB',
-            lineHeight: 1.15,
-            maxWidth: 900,
-            margin: '0 auto 20px',
-          }}
-        >
-          The app that tells you exactly what to do — and in what order
-        </h1>
-        <p
-          style={{
-            fontSize: 17,
-            color: 'rgba(248,250,252,0.75)',
-            fontWeight: 300,
-            maxWidth: 560,
-            margin: '0 auto 32px',
-            lineHeight: 1.7,
-          }}
-        >
-          Most people freeze when something goes wrong. CLOAK replaces panic with a clear, ordered action plan — built specifically for Australians.
-        </p>
+        <FadeIn delay={0}>
+          <h1
+            style={{
+              fontFamily: 'Syne, sans-serif',
+              fontWeight: 800,
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              color: '#F8F9FB',
+              lineHeight: 1.15,
+              maxWidth: 900,
+              margin: '0 auto 20px',
+            }}
+          >
+            The app that tells you exactly what to do — and in what order
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <p
+            style={{
+              fontSize: 17,
+              color: 'rgba(248,250,252,0.75)',
+              fontWeight: 300,
+              maxWidth: 560,
+              margin: '0 auto 32px',
+              lineHeight: 1.7,
+            }}
+          >
+            Most people freeze when something goes wrong. CLOAK replaces panic with a clear, ordered action plan — built specifically for Australians.
+          </p>
+        </FadeIn>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 20 }}>
           <a
             href="/#app"
@@ -260,96 +265,102 @@ export default function AboutPage() {
             gap: 16,
           }}
         >
-          <Card variant="teal">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <Avatar name="Sarah J" />
-              <span style={{ fontWeight: 700, color: 'var(--color-navy)' }}>Sarah J</span>
-              <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Melbourne VIC</span>
-            </div>
-            <h3
-              style={{
-                fontFamily: 'Syne, sans-serif',
-                fontSize: 'var(--font-size-base)',
-                fontWeight: 700,
-                lineHeight: 1.4,
-                color: 'var(--color-navy)',
-                margin: '12px 0 0',
-              }}
-            >
-              My MyGov Was Drained In 40 Minutes While I Was Asleep
-            </h3>
-            <p
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--color-text-secondary)',
-                lineHeight: 1.6,
-                margin: '10px 0 0',
-              }}
-            >
-              A scammer linked their bank account to her MyGov and redirected a $4,200 ATO refund. She had no idea until the money was gone.
-            </p>
-            <StatusPill status="recovered" detail="6 days to stabilise" />
-          </Card>
-          <Card variant="teal">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <Avatar name="Marcus T" />
-              <span style={{ fontWeight: 700, color: 'var(--color-navy)' }}>Marcus T</span>
-              <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Sydney NSW</span>
-            </div>
-            <h3
-              style={{
-                fontFamily: 'Syne, sans-serif',
-                fontSize: 'var(--font-size-base)',
-                fontWeight: 700,
-                lineHeight: 1.4,
-                color: 'var(--color-navy)',
-                margin: '12px 0 0',
-              }}
-            >
-              Phone And Wallet Stolen At Circular Quay — I Had No Idea What To Call First
-            </h3>
-            <p
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--color-text-secondary)',
-                lineHeight: 1.6,
-                margin: '10px 0 0',
-              }}
-            >
-              Without a prioritised list of who to contact, Marcus spent two hours making calls in the wrong order. His bank account was hit within 45 minutes of the theft.
-            </p>
-            <StatusPill status="recovered" detail="3 days to full recovery" />
-          </Card>
-          <Card variant="teal">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <Avatar name="Priya K" />
-              <span style={{ fontWeight: 700, color: 'var(--color-navy)' }}>Priya K</span>
-              <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Brisbane QLD</span>
-            </div>
-            <h3
-              style={{
-                fontFamily: 'Syne, sans-serif',
-                fontSize: 'var(--font-size-base)',
-                fontWeight: 700,
-                lineHeight: 1.4,
-                color: 'var(--color-navy)',
-                margin: '12px 0 0',
-              }}
-            >
-              Passport Stolen Overseas — Consulate Said To Expect Two Weeks
-            </h3>
-            <p
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--color-text-secondary)',
-                lineHeight: 1.6,
-                margin: '10px 0 0',
-              }}
-            >
-              Travelling solo in Europe, Priya had her bag stolen including her passport. She had no printed copies and no idea which Australian consulate to call.
-            </p>
-            <StatusPill status="recovered" detail="9 days to return home" />
-          </Card>
+          <FadeUp delay={0}>
+            <Card variant="teal">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                <Avatar name="Sarah J" />
+                <span style={{ fontWeight: 700, color: 'var(--color-navy)' }}>Sarah J</span>
+                <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Melbourne VIC</span>
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'Syne, sans-serif',
+                  fontSize: 'var(--font-size-base)',
+                  fontWeight: 700,
+                  lineHeight: 1.4,
+                  color: 'var(--color-navy)',
+                  margin: '12px 0 0',
+                }}
+              >
+                My MyGov Was Drained In 40 Minutes While I Was Asleep
+              </h3>
+              <p
+                style={{
+                  fontSize: 'var(--font-size-sm)',
+                  color: 'var(--color-text-secondary)',
+                  lineHeight: 1.6,
+                  margin: '10px 0 0',
+                }}
+              >
+                A scammer linked their bank account to her MyGov and redirected a $4,200 ATO refund. She had no idea until the money was gone.
+              </p>
+              <StatusPill status="recovered" detail="6 days to stabilise" />
+            </Card>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <Card variant="teal">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                <Avatar name="Marcus T" />
+                <span style={{ fontWeight: 700, color: 'var(--color-navy)' }}>Marcus T</span>
+                <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Sydney NSW</span>
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'Syne, sans-serif',
+                  fontSize: 'var(--font-size-base)',
+                  fontWeight: 700,
+                  lineHeight: 1.4,
+                  color: 'var(--color-navy)',
+                  margin: '12px 0 0',
+                }}
+              >
+                Phone And Wallet Stolen At Circular Quay — I Had No Idea What To Call First
+              </h3>
+              <p
+                style={{
+                  fontSize: 'var(--font-size-sm)',
+                  color: 'var(--color-text-secondary)',
+                  lineHeight: 1.6,
+                  margin: '10px 0 0',
+                }}
+              >
+                Without a prioritised list of who to contact, Marcus spent two hours making calls in the wrong order. His bank account was hit within 45 minutes of the theft.
+              </p>
+              <StatusPill status="recovered" detail="3 days to full recovery" />
+            </Card>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <Card variant="teal">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                <Avatar name="Priya K" />
+                <span style={{ fontWeight: 700, color: 'var(--color-navy)' }}>Priya K</span>
+                <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-text-muted)' }}>Brisbane QLD</span>
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'Syne, sans-serif',
+                  fontSize: 'var(--font-size-base)',
+                  fontWeight: 700,
+                  lineHeight: 1.4,
+                  color: 'var(--color-navy)',
+                  margin: '12px 0 0',
+                }}
+              >
+                Passport Stolen Overseas — Consulate Said To Expect Two Weeks
+              </h3>
+              <p
+                style={{
+                  fontSize: 'var(--font-size-sm)',
+                  color: 'var(--color-text-secondary)',
+                  lineHeight: 1.6,
+                  margin: '10px 0 0',
+                }}
+              >
+                Travelling solo in Europe, Priya had her bag stolen including her passport. She had no printed copies and no idea which Australian consulate to call.
+              </p>
+              <StatusPill status="recovered" detail="9 days to return home" />
+            </Card>
+          </FadeUp>
         </div>
       </section>
 
@@ -597,39 +608,43 @@ export default function AboutPage() {
 
       {/* Section 7 — Final CTA */}
       <section style={{ textAlign: 'center', padding: '80px 24px', background: 'var(--color-bg-page)' }}>
-        <h2
-          style={{
-            fontFamily: 'Syne, sans-serif',
-            fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
-            fontWeight: 800,
-            color: 'var(--color-text-primary)',
-            margin: '0 auto 16px',
-            maxWidth: 640,
-            lineHeight: 1.15,
-          }}
-        >
-          Set it up before you need it
-        </h2>
+        <FadeUp delay={0}>
+          <h2
+            style={{
+              fontFamily: 'Syne, sans-serif',
+              fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+              fontWeight: 800,
+              color: 'var(--color-text-primary)',
+              margin: '0 auto 16px',
+              maxWidth: 640,
+              lineHeight: 1.15,
+            }}
+          >
+            Set it up before you need it
+          </h2>
+        </FadeUp>
         <p style={{ fontSize: 17, color: 'var(--color-text-secondary)', fontWeight: 300, maxWidth: 480, margin: '0 auto 28px', lineHeight: 1.65 }}>
           Takes 4 minutes. Free to start. Could save you days of stress.
         </p>
-        <a
-          href="/#app"
-          style={{
-            display: 'inline-block',
-            background: 'var(--color-teal)',
-            color: 'var(--color-navy)',
-            fontWeight: 600,
-            padding: '13px 32px',
-            borderRadius: 8,
-            fontSize: 14,
-            fontFamily: 'DM Sans, sans-serif',
-            textDecoration: 'none',
-            marginBottom: 16,
-          }}
-        >
-          Download free
-        </a>
+        <FadeUp delay={0.1}>
+          <a
+            href="/#app"
+            style={{
+              display: 'inline-block',
+              background: 'var(--color-teal)',
+              color: 'var(--color-navy)',
+              fontWeight: 600,
+              padding: '13px 32px',
+              borderRadius: 8,
+              fontSize: 14,
+              fontFamily: 'DM Sans, sans-serif',
+              textDecoration: 'none',
+              marginBottom: 16,
+            }}
+          >
+            Download free
+          </a>
+        </FadeUp>
         <p style={{ fontSize: 12, color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.6 }}>
           Available on iOS and Android · Free to download · No credit card required
         </p>
